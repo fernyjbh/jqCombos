@@ -12,6 +12,8 @@
 All the arrays and strings are passed within an associative array encoded in json.
 Example: echo json_encode(array("id"=>array("3","4"),"name" => array("futbol","basket"),'label'=>'the label','comboname'=>'mycustomname'));
 
+- comboClass : You can add one o more css classes to the generated comboboxes just like this: 'oneClass anotherClass'.
+
 - prefixElement : If you want to give it a prefix to the ID of the generated selects to avoid two elements with the same ID.
 
 - wrapper : If you need to wrap each generated select in certain Html element with a class (can't be an ID, nop it can't).
@@ -24,6 +26,7 @@ $.fn.jqCombos = function(arguments){
 	var args = {
 		target		  : $(this).parent('div'),
 		file		  :	'ajax.php',
+		comboClass : '',
 		prefixElement : 'jqCombo_',
 		wrapper		  :	''
 	}
@@ -65,11 +68,14 @@ $.fn.jqCombos = function(arguments){
 			if(reply){
 				var combo = '<select name="'+o.prefixElement+i+'" id="'+o.prefixElement+i+'"><option value="">--</option></select>';
 				$(o.target).append(combo);
+				if(o.comboClass !== ''){
+					$('#'+o.prefixElement+i).addClass(o.comboClass);
+				}
 				if(o.wrapper !== ''){
 					$('#'+o.prefixElement+i).wrap(o.wrapper);
 				}
 				if(reply.label && reply.label !== ''){
-					$('#'+o.prefixElement+i).before('<label for="'+o.prefixElement+i+'">'+reply.label+'</label>');
+					$('#'+o.prefixElement+i).before('<label for="'+o.prefixElement+i+'">'+reply.label+'</label>&nbsp;');
 				}
 				if(reply.comboname && reply.comboname !== ''){
 					$('#'+o.prefixElement+i).attr('name',reply.comboname);
