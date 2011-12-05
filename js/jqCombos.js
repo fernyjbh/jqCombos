@@ -43,6 +43,7 @@ $.fn.jqCombos = function(arguments){
 				ajax($(element).val());
 			}else{
 				clear(element);
+				clearNext();
 			}
 		});
 	});
@@ -58,8 +59,9 @@ $.fn.jqCombos = function(arguments){
 	function clearNext(){
 		if(o.wrapper !== ''){
 			$(o.target).find('select[id="'+o.prefixElement+i+'"]').parent().remove();
-		}			
-		$(o.target).find('select[id="'+o.prefixElement+i+'"]').remove();
+		}	else {
+			$(o.target).find('select[id="'+o.prefixElement+i+'"]').remove();
+		}
 	}
 	
 	function ajax(send){
