@@ -49,17 +49,23 @@ $.fn.jqCombos = function(arguments){
 	});
 	
 	function clear(el){
-		if(o.wrapper !== ''){
-			$(el).nextAll($(o.wrapper).is('select[id^="'+o.prefixElement+'"]')).remove();
+		var ele = "";
+		if($(el).parent()){
+			ele = $(el).parent();
 		}else{
-			$(el).nextAll('select[id^="'+o.prefixElement+'"]').remove();
+			ele = $(el);
+		}
+		if(o.wrapper !== ''){
+			ele.nextAll($(o.wrapper).is('select[id^="'+o.prefixElement+'"]')).remove();
+		}else{
+			ele.nextAll('select[id^="'+o.prefixElement+'"]').remove();
 		}
 	}
 	
 	function clearNext(){
 		if(o.wrapper !== ''){
 			$(o.target).find('select[id="'+o.prefixElement+i+'"]').parent().remove();
-		}	else {
+		}else{
 			$(o.target).find('select[id="'+o.prefixElement+i+'"]').remove();
 		}
 	}
@@ -89,10 +95,13 @@ $.fn.jqCombos = function(arguments){
 				$('#'+o.prefixElement+i).jqCombos({
 					target		  : o.target,
 					file		  :	o.file,
+					comboClass	: o.comboClass,
 					prefixElement : o.prefixElement,
 					wrapper		  :	o.wrapper
 				});
-			}
+				
+			}		
+			
 		},"json");
 		
 	}
