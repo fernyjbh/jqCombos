@@ -8,8 +8,9 @@
 
 - target : The Html to be used as a container for the generated selects
 
-- file : The PHP file that returns the results from DB in json format. It contains the "id" array() used for the value of the options and the "name" array() used for the label of the options. Both arrays wrapped in an associative array encoded in json.
-Example: json_encode(array("id"=>array("8","9"),"name" => array("bicentenario","wikileaks")));
+- file : The PHP file that returns the results from the DB in json format. It contains the "id" [array], used for the value of the options and the "name" [array] used for the labels within the options; "label" is used to generate a label tag and "comboname" is used to assign a custom name to the generated combo.
+All the arrays and strings are passed within an associative array encoded in json.
+Example: echo json_encode(array("id"=>array("3","4"),"name" => array("futbol","basket"),'label'=>'the label','comboname'=>'mycustomname'));
 
 - prefixElement : If you want to give it a prefix to the ID of the generated selects to avoid two elements with the same ID.
 
@@ -67,7 +68,12 @@ $.fn.jqCombos = function(arguments){
 				if(o.wrapper !== ''){
 					$('#'+o.prefixElement+i).wrap(o.wrapper);
 				}
-				
+				if(reply.label && reply.label !== ''){
+					$('#'+o.prefixElement+i).before('<label for="'+o.prefixElement+i+'">'+reply.label+'</label>');
+				}
+				if(reply.comboname && reply.comboname !== ''){
+					$('#'+o.prefixElement+i).attr('name',reply.comboname);
+				}
 				$.each(reply.id,function(n){
 					$('#'+o.prefixElement+i).append('<option value="'+reply.id[n]+'">'+reply.name[n]+'</option>');
 				});				

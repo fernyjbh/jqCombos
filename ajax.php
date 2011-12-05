@@ -8,7 +8,7 @@ Trayendo resultados de una BD puede ser así
 			$name[] = $rs['name'];
 		}
 	}
-	$datas = json_encode(array('id'=>$id,'name'=>$name));
+	$datas = json_encode(array('id'=>$id,'name'=>$name,'label'=>'the label name','comboname'=>'costumName'));
 	echo $data;
 */
 
@@ -17,7 +17,7 @@ if($_POST['data'] == 0){
 	echo json_encode(array("id"=>array("0"),"name" => array("boom")));
 }
 if($_POST['data'] == 1){
-	echo json_encode(array("id"=>array("3","4"),"name" => array("futbol","basket")));
+	echo json_encode(array("id"=>array("3","4"),"name" => array("futbol","basket"),'label'=>'the label','comboname'=>'mycustomname'));
 }
 if($_POST['data'] == 2){
 	echo json_encode(array("id"=>array("8","9"),"name" => array("bicentenario","wikileaks")));
