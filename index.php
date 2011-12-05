@@ -5,6 +5,12 @@
 			.clearfix{
 				clear:both;
 			}
+			.medium{
+				width:250px;
+			}
+			.red{
+				border:1px solid red;
+			}
 		</style>
 		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" src="js/jqCombos.js"></script>
@@ -13,6 +19,7 @@
 				$("#jqCombo_0").jqCombos({
 					target 	: '#generated',
 					file	: 'ajax.php',
+					comboClass : 'medium red',
 					wrapper	: '<div class="clearfix" />'
 				});
 			});
