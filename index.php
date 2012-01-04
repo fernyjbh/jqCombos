@@ -4,6 +4,7 @@
 		<style>
 			.clearfix{
 				clear:both;
+				margin:20px auto;
 			}
 			.medium{
 				width:250px;
@@ -28,13 +29,25 @@
 	<body>
 		<div id="container">
 			<div id="generated">
-				<label for="jqCombo_0">Secciones</label>
-				<select name="jqCombo_0" id="jqCombo_0">
-					<option value="">--</option>
-					<option value="1">Deportes</option>
-					<option value="2">Especiales</option>
-				</select>
+				<div class="clearfix">
+					<label for="jqCombo_0">Primer nivel</label>
+					<select name="jqCombo_0" id="jqCombo_0">
+						<option value="">--</option>
+						<option value="1" >Deportes</option>
+						<option value="2" selected>Especiales</option>
+					</select>
+				</div>
+				<div class="clearfix">
+					<label for="jqCombo_1">Segundo nivel</label>
+					<select name="jqCombo_1" id="jqCombo_1">
+						<option value="">--</option>
+						<option value="8" selected >bicentenario</option>
+						<option value="9">wikileaks</option>
+					</select>
+				</div>
+
 			</div>
+			<div class="clearfix">&nbsp;</div>
 			<div>
 				<label for="anyOther">Any other selectbox</label>
 				<select name="anyOther" id="anyOther">

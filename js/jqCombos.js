@@ -71,7 +71,8 @@ $.fn.jqCombos = function(arguments){
 	}
 	
 	function ajax(send){
-		
+		i = 0;
+		i = $(o.target).find('select[id^="'+o.prefixElement+'"]').length;
 		$.post(o.file,{ data : send },function(reply){
 			if(reply){
 				var combo = '<select name="'+o.prefixElement+i+'" id="'+o.prefixElement+i+'"><option value="">--</option></select>';
