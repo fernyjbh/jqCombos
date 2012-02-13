@@ -15,6 +15,7 @@
 		</style>
 		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" src="js/jqCombos.js"></script>
+		<script type="text/javascript" src="js/spin.js"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 				$("#jqCombo_0").jqCombos({
